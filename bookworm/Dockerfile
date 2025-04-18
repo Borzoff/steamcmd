@@ -20,6 +20,9 @@ RUN set -x \
 		nano=7.2-1+deb12u1 \
 		curl=7.88.1-10+deb12u12 \
 		locales=2.36-9+deb12u10 \
+		# to check signatures, sometimes builds break because of unchecked signatures during apt update.
+		debian-archive-keyring \
+		gnupg \
 	&& sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
 	&& dpkg-reconfigure --frontend=noninteractive locales \
 	# Create unprivileged user
